@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block titulo %} List {% endblock %}
+{% block content %} 
+
+
+    <div style="margin-top: 10px;">
+        <a class="btn btn-secondary" href="{% url 'home' %}" style="font-size: 20px; margin-left: 25px;"><i class="bi bi-arrow-left-square"></i></a>
+        <a class="btn btn-success" href="{% url 'agregar' %}" style="font-size: 20px; margin-left: 18%;">Agregar Inscrito<i class="bi bi-bookmark-plus"></i></a>
+        <a class="btn btn-primary" href="{% url 'agregarinst' %}" style="font-size: 20px; margin-left: 28%;">Agregar Instituci&oacute;n<i class="bi bi-bookmark-plus"></i></a>
+    </div>
+    <div style="margin-top: 30px;background-color:rgb(236, 236, 236);border:2px solid black;border-radius: 50px;padding: 40px;" class="container">
+        {% if inscritos %}
+            <table class="table table-striped table-hover" style="border:2px;">
+                <thead>
+                    <th scope="col">id</th>
+                    <th scope="col">Rut</th>
+                    <th scope="col">Nombre del Inscrito</th>
+                    <th scope="col">Telefono</th>
+                    <th scope="col">Fecha de inscripci&oacute;n</th>
+                    <th scope="col">Hora de inscripci&oacute;n</th>
+                    <th scope="col">Instituci&oacute;n</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col">Observaci&oacute;n</th>
+                    <th scope="col">Opciones</th>
+                </thead>
+                <tbody>
+                    {% for r in inscritos %}
+                        <tr class="">
+                            <td>{{r.idins}}</td>
+                            <td>{{r.rut}}</td>
+                            <td>{{r.nombre}}</td>
+                            <td>{{r.telefono}}</td>
+                            <td>{{r.fecha_inscripcion}}</td>
+                            <td>{{r.hora_inscripcion}}</td>
+                            <td>{{r.institucion}}</td>
+                            <td>{{r.estado}}</td>
+                            <td>{{r.observacion}}</td>
+                            <td>
+                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop{{r.idins}}" style="font-size: 20px;"><i class="bi bi-trash-fill"></i></button>
+                                <a href="http://127.0.0.1:8000/edit/{{r.idins}}" class="btn btn-primary" style="font-size: 20px;"><i class="bi bi-file-medical-fill"></i></a>
+                                <div class="modal fade" id="staticBackdrop{{r.idins}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Eliminar inscripci&oacute;n {{r.idins}}</h1>
+                                        </div>
+                                        <div class="modal-body">Desea eliminar la inscripci&oacute;n de {{r.nombre}}</div>
+                                        <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <a type="button" class="btn btn-danger" href="http://127.0.0.1:8000/del/{{r.idins}}">Eliminar<i class="bi bi-trash-fill"></i></a>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <div class="alert alert-danger text-center">
+                No se encuentran Inscritos
+            </div>
+        {% endif %}
+    </div>
+
+{% endblock %}

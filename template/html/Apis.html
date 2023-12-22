@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block titulo %} Api's {% endblock %}
+{% block content %} 
+<div style="margin-top: 10px;">
+    <a class="btn btn-secondary" href="{% url 'home' %}" style="font-size: 20px; margin-left: 25px;"><i class="bi bi-arrow-left-square"></i></a>
+</div>
+    <div class="alert" role="alert" style="text-align: center; margin-top: 30px; font-size: 50px; background-color: #79AC78;">
+        <strong>SEMINARIO GASTRON&Oacute;MICO API'S</strong>
+    </div>
+    <section style="margin-top: 10px;">
+        <hr>
+        <div class="container">
+            <div class="row">
+                <div class="col" style="text-align: center; align-items: center;">
+                    <a href="{% url 'apiInst' %}" class="btn btn-success" style="font-size: 20px;">Api Instituciones <i class="bi bi-journal-text"></i></a>
+                </div>
+                <div class="col" style="text-align: center; align-items: center;">
+                    <a href="{% url 'apiInsc' %}" class="btn btn-secondary" style="font-size: 20px;">Api Inscritos <i class="bi bi-journal-text"></i></a>
+                </div>
+                <div class="col" style="text-align: center; align-items: center;">
+                    <a href="{% url 'apiDatUser'%}" class="btn btn-primary" style="font-size: 20px;">Mis Datos <i class="bi bi-journal-text"></i></a>
+                </div>
+            </div>
+        </div>
+        <hr>
+    </section>
+{% endblock %}

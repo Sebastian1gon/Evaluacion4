@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block titulo %} Home {% endblock %}
+{% block content %} 
+    <div class="alert" role="alert" style="text-align: center; margin-top: 30px; font-size: 50px; background-color: #79AC78;">
+        <strong>SEMINARIO GASTRON&Oacute;MICO</strong>
+    </div>
+    <section style="margin-top: 10px;">
+        <hr>
+        <div>
+            <a href="{% url 'apis'%}" class="btn btn-success" style="font-size: 20px; margin-left: 20%;">API'S <i class="bi bi-bookmark-plus"></i></a>
+            <a href="{% url 'listado'%}" class="btn btn-primary" style="font-size: 20px; margin-left: 35%;">Listado de inscritos <i class="bi bi-journal-text"></i></a>
+        </div>
+        <hr>
+    </section>
+{% endblock %}

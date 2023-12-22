@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block titulo %} add {% endblock %}
+{% block style %} <link rel="stylesheet" href="/static/css/forms.css"> {% endblock %}
+
+{% block content %}     
+    <div id="Eformulario" class="container" style="align-items: center;">
+        <div class="alert" role="alert" style="text-align: center; margin-top: 30px; font-size: 50px; background-color: #79AC78;">
+            <strong>AGREGAR {{tutilo}}</strong>
+        </div>
+        <div id="formulario">
+            <form  method="post">{% csrf_token %}
+                {{formulario.as_table}}
+                <div id="crear">
+                    <a id="cancelar" href="{% url 'listado'%}" type="button" class="btn btn-danger" style="font-size: 20px;">Cancelar <i class="bi bi-clipboard-x"></i></a>
+                    <input type="submit" class="btn btn-primary" value="Crear" style="font-size: 20px;">
+                </div>
+            </form>
+        </div>
+    </div> 
+    {% endblock %}
